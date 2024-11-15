@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.Random;
 
 import SortingAlgorithms.QuickSort;
+import SortingAlgorithms.ShellSort;
 
 public class Main {
     public static void main(String []args){
@@ -47,6 +48,7 @@ public class Main {
         }
 
         testAlgorithms(1, arrayAlmostSorted, arraySortedDecreased, arrayNotSorted);
+        testAlgorithms(2, arrayAlmostSorted, arraySortedDecreased, arrayNotSorted);
     }
     //The parameter algorithm will define which algorithm will be used to do the Sorting
     public static void testAlgorithms(int algorithm, int[] arrayAlmostSorted,
@@ -83,6 +85,33 @@ public class Main {
             System.out.println("Descending Order Array: "+descTimer+"s");
             System.out.println("Not Sorted Array: "+notSortedTimer+"s");
 
+        }
+        else if (algorithm == 2) {
+            // Testando o ShellSort
+            ShellSort ss = new ShellSort();
+            double almostSortedTimer, descTimer, notSortedTimer, startTimer, endTimer;
+
+
+            startTimer = System.currentTimeMillis();
+            ss.shellSortASC(copyAlmostSorted);
+            endTimer = System.currentTimeMillis();
+            almostSortedTimer = (endTimer - startTimer) / 1000.0;
+
+            startTimer = System.currentTimeMillis();
+            ss.shellSortASC(copyArrayDesc);
+            endTimer = System.currentTimeMillis();
+            descTimer = (endTimer - startTimer) / 1000.0;
+
+
+            startTimer = System.currentTimeMillis();
+            ss.shellSortASC(copyArrayNotSorted);
+            endTimer = System.currentTimeMillis();
+            notSortedTimer = (endTimer - startTimer) / 1000.0;
+
+            System.out.println("\n--- ShellSort ---");
+            System.out.println("Almost Sorted Array: " + almostSortedTimer + "s");
+            System.out.println("Descending Order Array: " + descTimer + "s");
+            System.out.println("Not Sorted Array: " + notSortedTimer + "s");
         }
     }
 }
