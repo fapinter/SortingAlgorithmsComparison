@@ -26,7 +26,7 @@ The performance of each algorithm will be measured in seconds. All algorithms wi
 ### Output Format
 The output of the system will be structured as follows:
 
-
+```
 Array Size: 10,000
 
 Execution Times for Each Algorithm
@@ -37,6 +37,7 @@ Quicksort      2.5 s             0.06 s          3.5 s
 Shellsort      0.07 s            0.07 s          4.8 s
 Heapsort       0.06 s            0.05 s          0.05 s
 ...
+```
 
 ### Report Submission
 In addition to the program presentation, a report will be submitted analyzing the results obtained for different array sizes (e.g., 50,000; 100,000; 500,000; 1,000,000). This report will include performance graphs and a thorough discussion of the results, explaining them based on the concepts and characteristics of the algorithms used. Please note that merely presenting graphs without analysis will result in a lower score for this section.
