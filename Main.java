@@ -19,13 +19,10 @@ public class Main {
         int []arraySortedDecreased  = new int[arraysSize];
         int []arrayNotSorted = new int[arraysSize];
 
-        //Range
         Random gen  = new Random();
-        int min = 0;
-        int max = arraysSize;
 
         for(int i = 0; i < arraysSize; i++){
-            int currNum = gen.nextInt(max+1);
+            int currNum = gen.nextInt(arraysSize * 3);
             arrayNotSorted[i] = currNum;
             arrayAlmostSorted[i] = currNum;
             arraySortedDecreased[i] = currNum;
@@ -33,18 +30,20 @@ public class Main {
         //Quicksort used to Sort the arrays but this part will not be
         //considered in the comparison of algorithms
         qs.quicksortDESC(arraySortedDecreased, 0, arraySortedDecreased.length - 1);
-        qs.quicksort(arrayAlmostSorted, 0, arrayAlmostSorted.length -1);
+        qs.quicksort(arrayAlmostSorted,0,arrayAlmostSorted.length-1);
 
-        int randomPercentage = gen.nextInt(10 - 5) + 5;
+        //Parameter bound is exclusive,
+        // so it chooses a number from 0 to 5
+        int randomPercentage = gen.nextInt(6) + 5;
 
         //For loop created to set 5 - 10 % of the array to not sorted
         for(int i = 0; i < randomPercentage; i++){
-            int first = gen.nextInt(arraysSize-1);
-            int last = gen.nextInt(arraysSize-1);
+            int first = gen.nextInt(arraysSize);
+            int last = gen.nextInt(arraysSize);
 
             int temp = arrayAlmostSorted[first];
             arrayAlmostSorted[first] = arrayAlmostSorted[last];
-            arrayAlmostSorted[last] = arrayAlmostSorted[temp];
+            arrayAlmostSorted[last] = temp;
         }
 
         testAlgorithms(1, arrayAlmostSorted, arraySortedDecreased, arrayNotSorted);
@@ -71,12 +70,12 @@ public class Main {
             almostSortedTimer = (endTimer - startTimer)/1000;
 
             startTimer = System.currentTimeMillis();
-            qs.quicksort(copyArrayDesc, 0, copyAlmostSorted.length-1);
+            qs.quicksort(copyArrayDesc,0,copyArrayDesc.length-1);
             endTimer = System.currentTimeMillis();
             descTimer = (endTimer - startTimer)/1000;
 
             startTimer = System.currentTimeMillis();
-            qs.quicksort(copyArrayNotSorted, 0, copyAlmostSorted.length-1);
+            qs.quicksort(copyArrayNotSorted,0,copyArrayNotSorted.length-1);
             endTimer = System.currentTimeMillis();
             notSortedTimer = (endTimer - startTimer)/1000;
 
