@@ -1,10 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 
-import SortingAlgorithms.CocktailShakerSort;
-import SortingAlgorithms.Heapsort;
-import SortingAlgorithms.QuickSort;
-import SortingAlgorithms.ShellSort;
+import SortingAlgorithms.*;
 
 public class Main {
  public static void main(String []args){
@@ -167,6 +164,32 @@ public class Main {
    notSortedTimer = (endTimer - startTimer) / 1000.0;
 
    System.out.println("\n--- Heapsort ---");
+   System.out.println("Almost Sorted Array: " + almostSortedTimer + "s");
+   System.out.println("Descending Order Array: " + descTimer + "s");
+   System.out.println("Not Sorted Array: " + notSortedTimer + "s");
+
+  } else if (algorithm == 5) {
+   MergeSort hs = new MergeSort();
+   double almostSortedTimer, descTimer, notSortedTimer, startTimer, endTimer;
+
+
+   startTimer = System.currentTimeMillis();
+   hs.mergeSort(copyAlmostSorted, 0, copyAlmostSorted.length-1);
+   endTimer = System.currentTimeMillis();
+   almostSortedTimer = (endTimer - startTimer) / 1000.0;
+
+   startTimer = System.currentTimeMillis();
+   hs.mergeSort(copyArrayDesc, 0, copyAlmostSorted.length-1);
+   endTimer = System.currentTimeMillis();
+   descTimer = (endTimer - startTimer) / 1000.0;
+
+
+   startTimer = System.currentTimeMillis();
+   hs.mergeSort(copyArrayNotSorted, 0, copyAlmostSorted.length-1);
+   endTimer = System.currentTimeMillis();
+   notSortedTimer = (endTimer - startTimer) / 1000.0;
+
+   System.out.println("\n--- Merge Sort ---");
    System.out.println("Almost Sorted Array: " + almostSortedTimer + "s");
    System.out.println("Descending Order Array: " + descTimer + "s");
    System.out.println("Not Sorted Array: " + notSortedTimer + "s");
