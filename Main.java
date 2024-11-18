@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 
+import SortingAlgorithms.CocktailShakerSort;
 import SortingAlgorithms.QuickSort;
 import SortingAlgorithms.ShellSort;
 
@@ -48,6 +49,7 @@ public class Main {
 
         testAlgorithms(1, arrayAlmostSorted, arraySortedDecreased, arrayNotSorted);
         testAlgorithms(2, arrayAlmostSorted, arraySortedDecreased, arrayNotSorted);
+        testAlgorithms(3, arrayAlmostSorted, arraySortedDecreased, arrayNotSorted);
     }
     //The parameter algorithm will define which algorithm will be used to do the Sorting
     public static void testAlgorithms(int algorithm, int[] arrayAlmostSorted,
@@ -108,6 +110,33 @@ public class Main {
             notSortedTimer = (endTimer - startTimer) / 1000.0;
 
             System.out.println("\n--- ShellSort ---");
+            System.out.println("Almost Sorted Array: " + almostSortedTimer + "s");
+            System.out.println("Descending Order Array: " + descTimer + "s");
+            System.out.println("Not Sorted Array: " + notSortedTimer + "s");
+        }
+        else if (algorithm == 3) {
+            //Testing CockTail Shaker Sort
+            CocktailShakerSort css = new CocktailShakerSort();
+            double almostSortedTimer, descTimer, notSortedTimer, startTimer, endTimer;
+
+
+            startTimer = System.currentTimeMillis();
+            css.cocktailShakerSort(copyAlmostSorted);
+            endTimer = System.currentTimeMillis();
+            almostSortedTimer = (endTimer - startTimer) / 1000.0;
+
+            startTimer = System.currentTimeMillis();
+            css.cocktailShakerSort(copyArrayDesc);
+            endTimer = System.currentTimeMillis();
+            descTimer = (endTimer - startTimer) / 1000.0;
+
+
+            startTimer = System.currentTimeMillis();
+            css.cocktailShakerSort(copyArrayNotSorted);
+            endTimer = System.currentTimeMillis();
+            notSortedTimer = (endTimer - startTimer) / 1000.0;
+
+            System.out.println("\n--- CockTail Shaker Sort ---");
             System.out.println("Almost Sorted Array: " + almostSortedTimer + "s");
             System.out.println("Descending Order Array: " + descTimer + "s");
             System.out.println("Not Sorted Array: " + notSortedTimer + "s");
