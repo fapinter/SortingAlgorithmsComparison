@@ -51,6 +51,8 @@ public class Main {
   testAlgorithms(2, arrayAlmostSorted, arraySortedDecreased, arrayNotSorted);
   testAlgorithms(3, arrayAlmostSorted, arraySortedDecreased, arrayNotSorted);
   testAlgorithms(4, arrayAlmostSorted, arraySortedDecreased, arrayNotSorted);
+  testAlgorithms(5, arrayAlmostSorted, arraySortedDecreased, arrayNotSorted);
+  testAlgorithms(6, arrayAlmostSorted, arraySortedDecreased, arrayNotSorted);
  }
  //The parameter algorithm will define which algorithm will be used to do the Sorting
  public static void testAlgorithms(int algorithm, int[] arrayAlmostSorted,
@@ -95,18 +97,18 @@ public class Main {
 
 
    startTimer = System.currentTimeMillis();
-   ss.shellsort(copyAlmostSorted);
+   ss.shellSortASC(copyAlmostSorted);
    endTimer = System.currentTimeMillis();
    almostSortedTimer = (endTimer - startTimer) / 1000.0;
 
    startTimer = System.currentTimeMillis();
-   ss.shellsort(copyArrayDesc);
+   ss.shellSortASC(copyArrayDesc);
    endTimer = System.currentTimeMillis();
    descTimer = (endTimer - startTimer) / 1000.0;
 
 
    startTimer = System.currentTimeMillis();
-   ss.shellsort(copyArrayNotSorted);
+   ss.shellSortDESC(copyArrayNotSorted);
    endTimer = System.currentTimeMillis();
    notSortedTimer = (endTimer - startTimer) / 1000.0;
 
@@ -169,27 +171,53 @@ public class Main {
    System.out.println("Not Sorted Array: " + notSortedTimer + "s");
 
   } else if (algorithm == 5) {
-   MergeSort hs = new MergeSort();
+   MergeSort ms = new MergeSort();
    double almostSortedTimer, descTimer, notSortedTimer, startTimer, endTimer;
 
 
    startTimer = System.currentTimeMillis();
-   hs.mergeSort(copyAlmostSorted, 0, copyAlmostSorted.length-1);
+   ms.mergeSort(copyAlmostSorted, 0, (copyAlmostSorted.length - 1));
    endTimer = System.currentTimeMillis();
    almostSortedTimer = (endTimer - startTimer) / 1000.0;
 
    startTimer = System.currentTimeMillis();
-   hs.mergeSort(copyArrayDesc, 0, copyAlmostSorted.length-1);
+   ms.mergeSort(copyArrayDesc, 0, (copyArrayDesc.length - 1));
    endTimer = System.currentTimeMillis();
    descTimer = (endTimer - startTimer) / 1000.0;
 
 
    startTimer = System.currentTimeMillis();
-   hs.mergeSort(copyArrayNotSorted, 0, copyAlmostSorted.length-1);
+   ms.mergeSort(copyArrayNotSorted, 0, (copyArrayNotSorted.length - 1));
    endTimer = System.currentTimeMillis();
    notSortedTimer = (endTimer - startTimer) / 1000.0;
 
    System.out.println("\n--- Merge Sort ---");
+   System.out.println("Almost Sorted Array: " + almostSortedTimer + "s");
+   System.out.println("Descending Order Array: " + descTimer + "s");
+   System.out.println("Not Sorted Array: " + notSortedTimer + "s");
+
+  } else if (algorithm == 6) {
+   InsertionSort is = new InsertionSort();
+   double almostSortedTimer, descTimer, notSortedTimer, startTimer, endTimer;
+
+
+   startTimer = System.currentTimeMillis();
+   is.insertionSort(copyAlmostSorted);
+   endTimer = System.currentTimeMillis();
+   almostSortedTimer = (endTimer - startTimer) / 1000.0;
+
+   startTimer = System.currentTimeMillis();
+   is.insertionSort(copyArrayDesc);
+   endTimer = System.currentTimeMillis();
+   descTimer = (endTimer - startTimer) / 1000.0;
+
+
+   startTimer = System.currentTimeMillis();
+   is.insertionSort(copyArrayNotSorted);
+   endTimer = System.currentTimeMillis();
+   notSortedTimer = (endTimer - startTimer) / 1000.0;
+
+   System.out.println("\n--- Insertion Sort ---");
    System.out.println("Almost Sorted Array: " + almostSortedTimer + "s");
    System.out.println("Descending Order Array: " + descTimer + "s");
    System.out.println("Not Sorted Array: " + notSortedTimer + "s");
